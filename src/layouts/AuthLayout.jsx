@@ -1,9 +1,25 @@
 import React from 'react';
+import authImg from "../assets/logo.png"
+import FitnessLogo from '../pages/shared/FitnessLogo/FitnessLogo';
+import { Outlet } from 'react-router';
 
 const AuthLayout = () => {
     return (
-        <div>
-            
+        <div className="p-12 bg-base-200">
+            <div>
+                <FitnessLogo></FitnessLogo>
+            </div>
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className='flex-1'>
+                    <img
+                        src={authImg}
+                        className="max-w-sm rounded-lg shadow-2xl"
+                    />
+                </div>
+                <div className='flex-1'>
+                    <Outlet></Outlet>
+                </div>
+            </div>
         </div>
     );
 };
