@@ -9,7 +9,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm;
+  } = useForm();
   const { updateUserProfile, createUser } = useAuth(AuthContext);
   const [profilePic, setProfilePic] = useState("");
   const navigate = useNavigate();
@@ -28,6 +28,15 @@ const Register = () => {
       navigate(from);
     });
   };
+
+  const handleImageUpload = async (e) => {
+    const image = e.target.files[0]
+
+    const formData = new FormData();
+    formData.append("image", image)
+
+    setProfilePic()
+  }
 
   return (
     <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
@@ -108,7 +117,7 @@ const Register = () => {
             <label htmlFor="photo" className="block mb-2 text-sm">
               Upload Photo
             </label>
-            <input
+            <input onChange={handleImageUpload}
               type="file"
               id="photo"
               accept="image/*"

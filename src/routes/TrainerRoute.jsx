@@ -3,7 +3,8 @@ import { Navigate, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
 import useUserRole from "../hooks/useUserRole";
 
-const AdminRoute = ({ children }) => {
+
+const TrainerRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const { role, roleLoading } = useUserRole();
   const location = useLocation();
@@ -12,17 +13,11 @@ const AdminRoute = ({ children }) => {
     return <span className="loading loading-spinner loading-xl"></span>;
   }
 
-  if (!user || role !== "admin") {
-    return (
-      <Navigate
-        to="/forbidden"
-        state={{ from: location.pathname }}
-        replace
-      />
-    );
+  if (!user || role !== "trainer") {
+    return <Navigate to="/forbidden" state={{ from: location.pathname }} replace />;
   }
 
   return children;
 };
 
-export default AdminRoute;
+export default TrainerRoute;
