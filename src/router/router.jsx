@@ -10,6 +10,7 @@ import AdminRoute from "../routes/AdminRoute";
 import TrainerRoute from "../routes/TrainerRoute";
 import MemberRoute from "../routes/MemberRoute";
 import PrivateRoute from "../routes/PrivateRoute";
+import AllTrainers from "../pages/AllTrainer.jsx/AllTrainers";
 
 export const router = createBrowserRouter([
   // 🌐 Public Routes
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       // { path: "/classes", element: <Classes /> },
-      // { path: "/trainers", element: <Trainers /> },
+      { path: "/allTrainers", element: <AllTrainers /> },
       // { path: "/trainer/:id", element: <TrainerDetails /> },
       // { path: "/forum", element: <Forum /> },
       // { path: "/forbidden", element: <Forbidden /> },

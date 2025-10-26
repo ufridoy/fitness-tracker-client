@@ -4,7 +4,7 @@ import FitnessLogo from '../../shared/FitnessLogo/FitnessLogo';
 const Home = () => {
     return (
         <div>
-            <FitnessLogo></FitnessLogo>
+            <h1>This is my home</h1>
         </div>
     );
 };

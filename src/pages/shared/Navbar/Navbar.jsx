@@ -43,7 +43,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/trainers"
+          to="/alltrainers"
           className={navLinkClass}
           onClick={() => setDropdownOpen(false)}
         >
@@ -89,34 +89,34 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link
-          to="/profile"
-          className="flex items-center px-2 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={() => setDropdownOpen(false)}
-        >
-          {user.photoURL ? (
-            <img
-              src={user.photoURL}
-              alt="Profile"
-              className="w-8 h-8 rounded-full border border-gray-200"
-            />
-          ) : (
-            <span className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold">
-              {user.displayName ? user.displayName[0] : "U"}
-            </span>
-          )}
-        </Link>
-      </li>
-      <li>
-        <button
-          onClick={() => {
-            handleLogout();
-            setDropdownOpen(false);
-          }}
-          className="flex items-center px-4 py-2 rounded border hover:bg-red-500 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-red-400"
-        >
-          Logout
-        </button>
+        <div>
+          <Link
+            to="/profile"
+            className="flex items-center px-2 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onClick={() => setDropdownOpen(false)}
+          >
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="Profile"
+                className="w-8 h-8 rounded-full border border-gray-200"
+              />
+            ) : (
+              <span className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold">
+                {user.displayName ? user.displayName[0] : "U"}
+              </span>
+            )}
+          </Link>
+          <button
+            onClick={() => {
+              handleLogout();
+              setDropdownOpen(false);
+            }}
+            className="flex items-center px-4 py-2 rounded border hover:bg-red-500 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-red-400"
+          >
+            Logout
+          </button>
+        </div>
       </li>
     </>
   ) : (
@@ -195,13 +195,17 @@ const Navbar = () => {
 
         {/* Right side buttons (Desktop) */}
         <div className="hidden lg:flex items-center gap-2">
-          {authButtons}
+          <ul className="lg:flex">{authButtons}</ul>
           {/* Dark Mode toggle button */}
           <button
             onClick={toggleDarkMode}
             className="ml-2 p-2 rounded-full hover:bg-gray-700 transition focus:outline-none focus:ring-2 focus:ring-yellow-400"
           >
-            {darkMode ? <HiSun className="text-xl" /> : <HiMoon className="text-xl" />}
+            {darkMode ? (
+              <HiSun className="text-xl" />
+            ) : (
+              <HiMoon className="text-xl" />
+            )}
           </button>
         </div>
       </div>
@@ -210,9 +214,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
 
 // import React from "react";
 // import FitnessLogo from "../FitnessLogo/FitnessLogo";
